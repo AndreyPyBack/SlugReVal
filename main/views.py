@@ -79,8 +79,9 @@ def logout(request):
         for page in visited_pages:
             VisitedPage.objects.create(user=request.user, page_name=page)
         # Удаляем куки
+        logout(request)
         response = redirect('login')
-        response.delete_cookie('visited_pages')
+        response.delete_cookie('visit_count')
         return response
     else:
         # Если пользователь не аутентифицирован, просто перенаправляем его на страницу входа
