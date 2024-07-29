@@ -24,3 +24,8 @@ class ProductForm(forms.ModelForm):
         if price <= 0:
             raise forms.ValidationError('Цена должна быть положительной.')
         return price
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
